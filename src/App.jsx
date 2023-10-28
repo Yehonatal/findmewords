@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-const BASE_URL = import.meta.env.API_URL ?? "https://api.datamuse.com";
+const BASE_URL = "https://api.datamuse.com" ?? import.meta.env.VITE_API_URL;
 
 function App() {
     const [word, setWord] = useState("");
