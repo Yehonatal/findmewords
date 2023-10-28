@@ -1,33 +1,18 @@
 import { useState } from "react";
 import "./App.css";
-
-const BASE_URL = "https://api.datamuse.com" ?? import.meta.env.VITE_API_URL;
+import { useGetSynonyms } from "./hooks/useGetSynonyms";
 
 function App() {
     const [word, setWord] = useState("");
-    const [result, setResult] = useState([]);
-
-    const fetchData = async (word) => {
-        try {
-            const response = await fetch(`${BASE_URL}/words?ml=${word}&max=10`);
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-
-            const data = await response.json();
-            setResult(data);
-        } catch (err) {
-            return null;
-        }
-    };
+    const { isLoading, result, getSynonyms } = useGetSynonyms();
 
     const findWord = () => {
-        fetchData(word);
+        getSynonyms(word);
         setWord(word);
     };
 
     const handleSynonymClicked = (newWord) => {
-        fetchData(newWord);
+        getSynonyms(newWord);
         setWord(newWord);
     };
 
@@ -53,7 +38,7 @@ function App() {
                     <p>Synonym for the word {word.toUpperCase()}</p>
                 </div>
             </div>
-            {result.length ? (
+            {!isLoading ? (
                 <div className="output_card">
                     {result.map((res, key) => (
                         <li key={key}>
