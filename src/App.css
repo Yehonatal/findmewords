@@ -118,3 +118,8 @@
     margin-right: 5px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.loading {
+    margin-top: 5em;
+    font-weight: 900;
+}

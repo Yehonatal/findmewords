@@ -38,7 +38,12 @@ function App() {
                     <p>Synonym for the word {word.toUpperCase()}</p>
                 </div>
             </div>
-            {!isLoading ? (
+
+            {isLoading ? (
+                <div className="loading">
+                    <h2>Loading . . . </h2>
+                </div>
+            ) : (
                 <div className="output_card">
                     {result.map((res, key) => (
                         <li key={key}>
@@ -60,10 +65,6 @@ function App() {
                             ))}
                         </li>
                     ))}
-                </div>
-            ) : (
-                <div>
-                    <p>Waiting for Search . . . </p>
                 </div>
             )}
         </>
