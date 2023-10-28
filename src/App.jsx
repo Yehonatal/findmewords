@@ -1,26 +1,21 @@
 import { useState } from "react";
 import "./App.css";
 
+const BASE_URL = import.meta.env.API_URL ?? "https://api.datamuse.com";
+
 function App() {
     const [word, setWord] = useState("");
     const [result, setResult] = useState([]);
 
-    // useEffect(() => {
-    //     // setResult(word);
-    // }, [word]);
-
     const findWord = async () => {
         try {
-            const response = await fetch(
-                `https://api.datamuse.com/words?ml=${word}&max=10`
-            );
+            const response = await fetch(`${BASE_URL}/words?ml=${word}&max=10`);
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
 
             const data = await response.json();
             setResult(data);
-            console.log(data);
         } catch (err) {
             return null;
         }
