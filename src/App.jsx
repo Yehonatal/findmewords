@@ -7,7 +7,7 @@ function App() {
     const [word, setWord] = useState("");
     const [result, setResult] = useState([]);
 
-    const findWord = async () => {
+    const fetchData = async (word) => {
         try {
             const response = await fetch(`${BASE_URL}/words?ml=${word}&max=10`);
             if (!response.ok) {
@@ -19,7 +19,16 @@ function App() {
         } catch (err) {
             return null;
         }
-        setWord("");
+    };
+
+    const findWord = () => {
+        fetchData(word);
+        setWord(word);
+    };
+
+    const handleSynonymClicked = (newWord) => {
+        fetchData(newWord);
+        setWord(newWord);
     };
 
     return (
@@ -49,7 +58,14 @@ function App() {
                     {result.map((res, key) => (
                         <li key={key}>
                             <h3>
-                                synonym: <span>{res.word}</span>
+                                synonym:{" "}
+                                <span
+                                    onClick={() =>
+                                        handleSynonymClicked(res.word)
+                                    }
+                                >
+                                    {res.word}
+                                </span>
                             </h3>
                             <h4>score: {res.score}</h4>
                             {res.tags.map((tag, key) => (
