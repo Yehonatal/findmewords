@@ -1,0 +1,119 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+.card {
+    padding: 2em;
+}
+
+.read-the-docs {
+    color: #888;
+}
+
+.container {
+    position: fixed;
+    background-color: #242424;
+
+    backdrop-filter: blur(15px);
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    max-width: 1280px;
+    width: 100%;
+    margin-inline: auto;
+}
+
+.search_box {
+    display: flex;
+    flex-direction: row;
+
+    gap: 10px;
+    input {
+        font-weight: bold;
+        padding: 0.5em 1em;
+    }
+}
+
+.output_card {
+    margin-top: 5em;
+    border-radius: 5px;
+    font-weight: 900;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1em;
+}
+
+@media (min-width: 750px) {
+    .output_card {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.tag {
+    margin-top: 1em;
+    font-size: small;
+    border: 2px solid rgba(0, 255, 0, 0.087);
+    width: fit-content;
+    padding: 0 1em;
+    background-color: rgba(90, 93, 94, 0.318);
+}
+.output_card h2 {
+    color: teal;
+}
+
+.output_card li {
+    margin-bottom: 20px;
+    list-style-type: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 255, 0, 0.087);
+    background-color: rgba(90, 93, 94, 0.318);
+    span {
+        font-size: 1.5em;
+        font-weight: 900;
+        color: teal;
+    }
+}
+
+.min {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(55, 66, 64);
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
